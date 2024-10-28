@@ -9,14 +9,17 @@ import { handleError } from "../utils";
 // CREATE
 export async function createUser(user: CreateUserParams) {
   try {
+    console.log("create user", user);
     await connectToDatabase();
 
     const newUser = await User.create(user);
 
     return JSON.parse(JSON.stringify(newUser));
   } catch (error) {
+    console.error(error);
     handleError(error);
   }
+  console.log("User is created successfully");
 }
 
 // READ
