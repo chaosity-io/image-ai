@@ -87,9 +87,12 @@ export function removeKeysFromQuery({
 // DEBOUNCE
 export const debounce = (func: (...args: any[]) => void, delay: number) => {
   let timeoutId: NodeJS.Timeout | null;
+  console.log("timeoutId");
   return (...args: any[]) => {
     if (timeoutId) clearTimeout(timeoutId);
+    
     timeoutId = setTimeout(() => func(null, ...args), delay);
+    
   };
 };
 
